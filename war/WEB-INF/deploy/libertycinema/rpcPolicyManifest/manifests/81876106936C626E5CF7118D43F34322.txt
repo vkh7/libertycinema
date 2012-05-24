@@ -1,0 +1,2 @@
+serviceClass: com.java.gwt.libertycinema.client.GreetingService
+path: 3B232B8F83471DD3BD3EF268FDF5B41A.gwt.rpc
