@@ -17,36 +17,21 @@ import com.google.gwt.dom.client.Style.Unit;
 public class LibertyCinema implements EntryPoint {
 
     private DockLayoutPanel main = new DockLayoutPanel(Unit.EM);
-    private VerticalPanel header = new VerticalPanel();
-    private HorizontalPanel headerHtml = new HorizontalPanel();
-    private HorizontalPanel headerButtons = new HorizontalPanel();
-    private HorizontalPanel body = new HorizontalPanel();
+    private VerticalPanel body = new VerticalPanel();
+
     private FooterBar footer;
+    private TopNavBar header;
 
     public void onModuleLoad() {
-	headerHtml.add(new HTML("<h2>Liberty Cinema</h2>"));
-
-	Button home = new Button("Home");
-	Button contactUs = new Button("Contact Us");
-
-	headerButtons.add(home);
-	headerButtons.add(contactUs);
-
-
-	header.add(headerHtml);
-
-	header.add(headerButtons);
-
-
-	main.addNorth(header, 7);
+	header = new TopNavBar(main, body);
+	header.setUpTopNavBar();
 
 	// Setup footer
-	footer = new FooterBar(main);
+	footer = new FooterBar(main, body);
 	footer.setUpFooter();
 
 	main.add(new HTML("asd"));
 
 	RootLayoutPanel.get().add(main);
-
     }
 }
