@@ -21,7 +21,7 @@ public class LibertyCinema implements EntryPoint {
     private HorizontalPanel headerHtml = new HorizontalPanel();
     private HorizontalPanel headerButtons = new HorizontalPanel();
     private HorizontalPanel body = new HorizontalPanel();
-    private HorizontalPanel footer = new HorizontalPanel();
+    private FooterBar footer;
 
     public void onModuleLoad() {
 	headerHtml.add(new HTML("<h2>Liberty Cinema</h2>"));
@@ -40,7 +40,10 @@ public class LibertyCinema implements EntryPoint {
 
 	main.addNorth(header, 7);
 
-	main.addSouth(new HTML("By Venkatesh Hodavdekar (vhodavdekar@gmail.com)"), 2);
+	// Setup footer
+	footer = new FooterBar(main);
+	footer.setUpFooter();
+
 	main.add(new HTML("asd"));
 
 	RootLayoutPanel.get().add(main);
