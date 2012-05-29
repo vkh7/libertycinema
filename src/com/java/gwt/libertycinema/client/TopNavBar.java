@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 
-import com.java.gwt.libertycinema.client.HomeLinkCommand;
+import com.java.gwt.libertycinema.client.views.HomeLinkCommand;
 
 
 public class TopNavBar {
