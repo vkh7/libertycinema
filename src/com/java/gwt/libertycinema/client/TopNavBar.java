@@ -2,7 +2,6 @@ package com.java.gwt.libertycinema.client;
 
 
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -10,13 +9,11 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class TopNavBar {
 
-    private DockLayoutPanel main;
     private VerticalPanel body;
 
     private VerticalPanel headerPanel = new VerticalPanel();
 
-    public TopNavBar(DockLayoutPanel main, VerticalPanel body) {
-	this.main = main;
+    public TopNavBar(VerticalPanel body) {
 	this.body = body;
     }
 
@@ -35,9 +32,9 @@ public class TopNavBar {
 	return logoPanel;
     }
 
-    public void setUpTopNavBar() {
+    public VerticalPanel getTopBarPanel() {
 	headerPanel.add(setUpTopNavLogo());
 	headerPanel.add(setUpTopNavButtons());
-	main.addNorth(headerPanel, 7);
+	return headerPanel;
     }
 }

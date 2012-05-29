@@ -23,12 +23,12 @@ public class LibertyCinema implements EntryPoint {
     private TopNavBar header;
 
     public void onModuleLoad() {
-	header = new TopNavBar(main, body);
-	header.setUpTopNavBar();
+	header = new TopNavBar(body);
+	main.addNorth(header.getTopBarPanel(), 7);
 
 	// Setup footer
-	footer = new FooterBar(main, body);
-	footer.setUpFooter();
+	footer = new FooterBar(body);
+	main.addSouth(footer.getFooterPanel(), 2);
 
 	main.add(new HTML("asd"));
 
