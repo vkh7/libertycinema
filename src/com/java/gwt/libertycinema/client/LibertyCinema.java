@@ -32,7 +32,8 @@ public class LibertyCinema implements EntryPoint {
 	main.addSouth(footer.getFooterPanel(), 2);
 
 	// Setup main
-	main.add(new HTML("asd"));
+	body.add(new HTML("asd"));
+	main.add(body);
 
 	RootLayoutPanel.get().add(main);
     }
