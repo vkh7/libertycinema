@@ -1,0 +1,10 @@
+*~
+gwt-unitCache*
+war/WEB-INF*
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
