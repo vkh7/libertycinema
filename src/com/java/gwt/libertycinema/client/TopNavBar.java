@@ -1,10 +1,16 @@
 package com.java.gwt.libertycinema.client;
 
 
+import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.VerticalPanel;
+
+
+import com.java.gwt.libertycinema.client.HomeLinkCommand;
 
 
 public class TopNavBar {
@@ -17,13 +23,11 @@ public class TopNavBar {
 	this.body = body;
     }
 
-    private HorizontalPanel setUpTopNavButtons() {
-	HorizontalPanel buttonsPanel = new HorizontalPanel();
-	buttonsPanel.add(new Button("Home"));
-	buttonsPanel.add(new Button("Gallery"));
-	buttonsPanel.add(new Button("Testimonials"));
-	buttonsPanel.add(new Button("Contact Us"));
-	return buttonsPanel;
+    private MenuBar setUpTopNavButtons() {
+	MenuBar menu = new MenuBar();
+	menu.addItem("foo", new HomeLinkCommand(body));
+	menu.addItem("bar", new HomeLinkCommand(body));
+	return menu;
     }
 
     private HorizontalPanel setUpTopNavLogo() {
