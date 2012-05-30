@@ -4,10 +4,10 @@
   <property name="gwt.args" value="" />
 
   <!-- Configure path to GWT SDK -->
-  <property name="gwt.sdk" location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0" />
+  <property name="gwt.sdk" location="/home/vhodavdekar/sdks/gwt-2.4.0" />
 
   <!-- Configure path to App Engine SDK -->
-  <property name="appengine.sdk" location="/Users/kiee/CodeRepo/sdk/appengine-java-sdk-1.6.6" />
+  <property name="appengine.sdk" location="/home/vhodavdekar/sdks/appengine-java-sdk-1.6.6" />
 
   <path id="project.class.path">
     <pathelement location="war/WEB-INF/classes"/>
@@ -64,8 +64,8 @@
         <pathelement location="src"/>
         <path refid="project.class.path"/>
         <path refid="tools.class.path"/>
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/validation-api-1.0.0.GA.jar" />
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/validation-api-1.0.0.GA-sources.jar" />
+        <pathelement location="{gwt.sdk}/validation-api-1.0.0.GA.jar" />
+        <pathelement location="{gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
       </classpath>
       <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
       <jvmarg value="-Xmx256M"/>
@@ -74,8 +74,6 @@
       <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
       <arg line="${gwt.args}"/>
       <arg value="com.java.gwt.libertycinema.LibertyCinema"/>
-      <arg value="-server"/>
-      <arg value="com.google.appengine.tools.development.gwt.AppEngineLauncher"/>
     </java>
   </target>
 
@@ -84,8 +82,8 @@
       <classpath>
         <pathelement location="src"/>
         <path refid="project.class.path"/>
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/validation-api-1.0.0.GA.jar" />
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/validation-api-1.0.0.GA-sources.jar" />
+        <pathelement location="{gwt.sdk}/validation-api-1.0.0.GA.jar" />
+        <pathelement location="{gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
       </classpath>
       <jvmarg value="-Xmx256M"/>
       <arg value="-startupUrl"/>
@@ -103,7 +101,7 @@
       source="1.5" target="1.5" nowarn="true"
       destdir="war/WEB-INF/classes"
       debug="true" debuglevel="lines,vars,source">
-      <classpath location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/junit-4.10.jar"/>
+      <classpath location="{gwt.sdk}/junit-4.10.jar"/>
       <classpath refid="project.class.path"/>
     </javac>
   </target>
@@ -118,9 +116,9 @@
         <pathelement location="src" />
         <pathelement location="test" />
         <path refid="project.class.path" />
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/validation-api-1.0.0.GA.jar" />
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/validation-api-1.0.0.GA-sources.jar" />
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/junit-4.10.jar" />
+        <pathelement location="{gwt.sdk}/validation-api-1.0.0.GA.jar" />
+        <pathelement location="{gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
+        <pathelement location="{gwk.sdk}/junit-4.10.jar" />
       </classpath>
       <batchtest todir="reports/htmlunit.dev" >
         <fileset dir="test" >
@@ -142,9 +140,9 @@
         <pathelement location="src" />
         <pathelement location="test" />
         <path refid="project.class.path" />
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/validation-api-1.0.0.GA.jar" />
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/validation-api-1.0.0.GA-sources.jar" />
-        <pathelement location="/Users/kiee/CodeRepo/sdk/gwt-2.4.0/junit-4.10.jar" />
+        <pathelement location="{gwt.sdk}/validation-api-1.0.0.GA.jar" />
+        <pathelement location="{gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
+        <pathelement location="{gwk.sdk}/junit-4.10.jar" />
       </classpath>
       <batchtest todir="reports/htmlunit.prod" >
         <fileset dir="test" >
@@ -161,7 +159,24 @@
     <antcall target="test.prod" />
   </target>
 
-  <target name="hosted" depends="devmode" description="Run development mode (NOTE: the 'hosted' target is deprecated)" />
+  <target name="hosted" depends="javac" description="Run hosted mode">
+    <java failonerror="true" fork="true" classname="com.google.gwt.dev.HostedMode">
+      <classpath>
+        <pathelement location="src"/>
+        <path refid="project.class.path"/>
+        <path refid="tools.class.path"/>
+      </classpath>
+      <jvmarg value="-Xmx256M"/>
+      <arg value="-startupUrl"/>
+      <arg value="LibertyCinema.html"/>
+      <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+      <arg value="-server"/>
+      <arg value="com.google.appengine.tools.development.gwt.AppEngineLauncher"/>
+      <arg value="com.java.gwt.libertycinema.LibertyCinema"/>
+      <arg value="-bindAddress"/>
+      <arg value="0.0.0.0"/>
+    </java>
+  </target>
 
   <target name="build" depends="gwtc" description="Build this project" />
 
