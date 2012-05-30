@@ -25,8 +25,12 @@ public class TopNavBar {
 
     private MenuBar setUpTopNavButtons() {
 	MenuBar menu = new MenuBar();
-	menu.addItem("foo", new HomeLinkCommand(body));
-	menu.addItem("bar", new HomeLinkCommand(body));
+	menu.addItem("Home", new HomeLinkCommand(body));
+	menu.addItem("Gallery", new HomeLinkCommand(body));
+	menu.addItem("Testimonials", new HomeLinkCommand(body));
+	menu.addItem("Permissions", new HomeLinkCommand(body));
+	menu.addItem("Technical Details", new HomeLinkCommand(body));
+	menu.addItem("Contact Us", new HomeLinkCommand(body));
 	return menu;
     }
 
