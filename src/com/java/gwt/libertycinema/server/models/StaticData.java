@@ -24,8 +24,8 @@ public class StaticData {
     private String menuDescription;
 
     public StaticData(String menuName, String menuDescription) {
-        this.firstName = menuName;
-        this.lastName = menuDescription;
+        this.menuName = menuName;
+        this.menuDescription = menuDescription;
     }
 
     // Accessors for the fields. JDO doesn't use these, but your application does.
