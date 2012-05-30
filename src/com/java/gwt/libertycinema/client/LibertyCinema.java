@@ -3,21 +3,20 @@ package com.java.gwt.libertycinema.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
-import com.google.gwt.dom.client.Style.Unit;
+import com.java.gwt.libertycinema.client.BodyPanel;
 
 
 public class LibertyCinema implements EntryPoint {
 
     private DockLayoutPanel main = new DockLayoutPanel(Unit.EM);
-    private VerticalPanel body = new VerticalPanel();
+    private BodyPanel body = new BodyPanel();
 
     private FooterBar footer;
     private TopNavBar header;
@@ -32,7 +31,6 @@ public class LibertyCinema implements EntryPoint {
 	main.addSouth(footer.getFooterPanel(), 2);
 
 	// Setup main
-	body.add(new HTML("asd"));
 	main.add(body);
 
 	RootLayoutPanel.get().add(main);

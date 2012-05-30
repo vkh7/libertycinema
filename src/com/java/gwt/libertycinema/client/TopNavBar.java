@@ -9,17 +9,17 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-
+import com.java.gwt.libertycinema.client.BodyPanel;
 import com.java.gwt.libertycinema.client.views.HomeLinkCommand;
 
 
 public class TopNavBar {
 
-    private VerticalPanel body;
+    private BodyPanel body;
 
     private VerticalPanel headerPanel = new VerticalPanel();
 
-    public TopNavBar(VerticalPanel body) {
+    public TopNavBar(BodyPanel body) {
 	this.body = body;
     }
 

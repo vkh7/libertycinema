@@ -2,23 +2,23 @@ package com.java.gwt.libertycinema.client.views;
 
 
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.VerticalPanel;
+
+import com.java.gwt.libertycinema.client.BodyPanel;
 
 
 public class HomeLinkCommand implements Command {
 
-    VerticalPanel body;
+    BodyPanel body;
 
-    public HomeLinkCommand(VerticalPanel body) {
+    public HomeLinkCommand(BodyPanel body) {
 	this.body = body;
     }
 
     public void execute() {
-	body.clear();
-	body.add(new HTML("test"));
-	body.add(new HTML("test5"));
+	body.getBodyPanel().clear();
+	body.getBodyPanel().add(new HTML("test"));
+	body.getBodyPanel().add(new HTML("test5"));
     }
 
     public void getHomeScreenData() {
