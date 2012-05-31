@@ -13,7 +13,7 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 public class StaticData {
 
-	@PrimaryKey
+    @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
 
@@ -39,14 +39,14 @@ public class StaticData {
     }
 
     public String getMenuDescription() {
-		return menuDescription;
-	}
+	return menuDescription;
+    }
 
-	public void setMenuDescription(String menuDescription) {
-		this.menuDescription = menuDescription;
-	}
+    public void setMenuDescription(String menuDescription) {
+	this.menuDescription = menuDescription;
+    }
 
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
-	}
+    public void setMenuName(String menuName) {
+	this.menuName = menuName;
+    }
 }
