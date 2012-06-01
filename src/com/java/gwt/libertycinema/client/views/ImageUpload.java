@@ -24,59 +24,58 @@ public class ImageUpload implements Command {
     private final FormPanel form = new FormPanel();
 
     public ImageUpload(BodyPanel body) {
-    	this.body = body;
+        this.body = body;
     }
 
     public void execute() {
-    	setupUploadForm(body);
+        setupUploadForm(body);
     }
 
     private void setupUploadForm(BodyPanel body) {
-		form.setAction("/myFormHandler");
-		form.setEncoding(FormPanel.ENCODING_MULTIPART);
-		form.setMethod(FormPanel.METHOD_POST);
-	
-		Grid grid = new Grid(4, 2);
-	
-		grid.setWidget(0, 0, new Label("Title:"));
-		final TextBox title = new TextBox();
-		title.setName("title");
-		grid.setWidget(0, 1, title);
-	
-		grid.setWidget(1, 0, new Label("Description:"));
-		final TextArea description = new TextArea();
-		description.setName("description");
-		grid.setWidget(1, 1, description);
-	
-		grid.setWidget(2, 0, new Label("Pick a file:"));
-		FileUpload upload = new FileUpload();
-		upload.setName("image");
-		grid.setWidget(2, 1, upload);
-	
-		grid.setWidget(3, 1, new Button("Submit", new ClickHandler() {
-			public void onClick(ClickEvent event) {
-			    form.submit();
-			}
-		    }));
-	
-		form.setWidget(grid);
-	
-		form.addSubmitHandler(new FormPanel.SubmitHandler() {
-			public void onSubmit(SubmitEvent event) {
-			    if (title.getText().length() == 0) {
-				event.cancel();
-			    }
-			}
-		    });
-	
-		form.addSubmitCompleteHandler(new FormPanel.SubmitCompleteHandler() {
-			public void onSubmitComplete(SubmitCompleteEvent event) {
-	
-			}
-		    });
-		
-		body.getBodyPanel().clear();
-		body.getBodyPanel().add(form);
+        form.setAction("/myFormHandler");
+        form.setEncoding(FormPanel.ENCODING_MULTIPART);
+        form.setMethod(FormPanel.METHOD_POST);
+        
+        Grid grid = new Grid(4, 2);
+        
+        grid.setWidget(0, 0, new Label("Title:"));
+        final TextBox title = new TextBox();
+        title.setName("title");
+        grid.setWidget(0, 1, title);
+        
+        grid.setWidget(1, 0, new Label("Description:"));
+        final TextArea description = new TextArea();
+        description.setName("description");
+        grid.setWidget(1, 1, description);
+        
+        grid.setWidget(2, 0, new Label("Pick a file:"));
+        FileUpload upload = new FileUpload();
+        upload.setName("image");
+        grid.setWidget(2, 1, upload);
+        
+        grid.setWidget(3, 1, new Button("Submit", new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                    form.submit();
+            }
+        }));
+        
+        form.setWidget(grid);
+        
+        form.addSubmitHandler(new FormPanel.SubmitHandler() {
+            public void onSubmit(SubmitEvent event) {
+                if (title.getText().length() == 0) {
+                    event.cancel();
+                    }
+                }
+        });
+        
+        form.addSubmitCompleteHandler(new FormPanel.SubmitCompleteHandler() {
+        	public void onSubmitComplete(SubmitCompleteEvent event) {
+        
+        	}
+        });
+        
+        body.getBodyPanel().clear();
+        body.getBodyPanel().add(form);
     }
-
 }
