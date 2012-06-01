@@ -17,6 +17,16 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>putImage</servlet-name>
+    <servlet-class>com.java.gwt.libertycinema.server.PutImageServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>putImage</servlet-name>
+    <url-pattern>/libertycinema/putimage</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>greetServlet</servlet-name>
     <servlet-class>com.java.gwt.libertycinema.server.GreetingServiceImpl</servlet-class>
   </servlet>

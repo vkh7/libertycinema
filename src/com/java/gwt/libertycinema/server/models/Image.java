@@ -33,15 +33,7 @@ public class Image {
     @Persistent
     private Blob image;
 
-    public Image(String title, String description, Date created, Blob image) {
-        this.title = title;
-        this.description = description;
-	this.created = created;
-	this.image = image;
-    }
-
     // Accessors for the fields. JDO doesn't use these, but your application does.
-
     public Key getKey() {
         return key;
     }
