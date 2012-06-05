@@ -23,6 +23,10 @@ public class StaticData {
     @Persistent
     private String menuDescription;
 
+    public StaticData(String menuName) {
+        this.menuName = menuName;        
+    }
+    
     public StaticData(String menuName, String menuDescription) {
         this.menuName = menuName;
         this.menuDescription = menuDescription;

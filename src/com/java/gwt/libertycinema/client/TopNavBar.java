@@ -16,6 +16,7 @@ import com.java.gwt.libertycinema.client.services.LoginService;
 import com.java.gwt.libertycinema.client.services.LoginServiceAsync;
 import com.java.gwt.libertycinema.client.views.HomeLinkCommand;
 import com.java.gwt.libertycinema.client.views.ImageUpload;
+import com.java.gwt.libertycinema.client.views.StaticPages;
 import com.java.gwt.libertycinema.shared.LoginInfo;
 
 
@@ -66,7 +67,7 @@ public class TopNavBar {
 
     public MenuBar getAdminMenu() {
     	MenuBar adminMenu = new MenuBar(true);
-    	adminMenu.addItem("Static Pages", new HomeLinkCommand(body));
+    	adminMenu.addItem("Static Pages", new StaticPages(body));
     	adminMenu.addItem("Images", new ImageUpload(body));
     	return adminMenu;
     }
