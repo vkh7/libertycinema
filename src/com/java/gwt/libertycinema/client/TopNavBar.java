@@ -45,7 +45,7 @@ public class TopNavBar {
     		}
     		public void onSuccess(LoginInfo loginInfo) {
     		    if(loginInfo.isAdminUser()) {
-    			menu.addItem("Admin", getAdminMenu());
+    		        menu.addItem("Admin", getAdminMenu());
     		    }
     		}
     	    });
