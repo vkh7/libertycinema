@@ -3,6 +3,7 @@ package com.java.gwt.libertycinema.server.models;
 
 import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 import java.util.Date;
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -25,25 +26,34 @@ public class Image {
     private String description;
 
     @Persistent
-    private Date created;
-
-    @Persistent
     private Date updated;
 
     @Persistent
     private Blob image;
+
+    public Image(String title, String description, byte[] image) {
+        this.title = title;
+        this.description = description;
+        this.setImage(image);
+        this.setUpdated(new Date());
+        this.setKey(KeyFactory.createKey(Image.class.getSimpleName(), title));
+    }
 
     // Accessors for the fields. JDO doesn't use these, but your application does.
     public Key getKey() {
         return key;
     }
 
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
     public byte[] getImage() {
         if (image == null) {
             return null;
+        } else {
+            return image.getBytes();
         }
-
-        return image.getBytes();
     }
 
     public void setImage(byte[] bytes) {
@@ -51,7 +61,7 @@ public class Image {
     }
 
     public String getTitle() {
-	return title;
+        return title;
     }
 
     public void setTitle(String title) {
@@ -59,27 +69,18 @@ public class Image {
     }
 
     public String getDescription() {
-	return description;
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public Date getCreated() {
-	return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
     public Date getUpdated() {
-	return updated;
+        return updated;
     }
 
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
-
 }
