@@ -19,6 +19,7 @@ public class StaticDataServiceImpl extends RemoteServiceServlet implements Stati
     @Override
     public StaticDataInfo putMenuItem(String menuName, String menuDescription) {
         StaticData data = new StaticData(menuName, menuDescription);
+
         PersistenceManager pm = PMF.get().getPersistenceManager();
         pm.makePersistent(data);
 
@@ -48,16 +49,11 @@ public class StaticDataServiceImpl extends RemoteServiceServlet implements Stati
     @Override
     public StaticDataInfo getMenuItem(String menuName) {
         PersistenceManager pm = PMF.get().getPersistenceManager();
-        Query q = pm.newQuery(StaticData.class, "menuName == menuNameParam");
-        q.declareParameters("String menuNameParam");
-
-        List<StaticData> results = (List<StaticData>) q.execute(menuName);
-        StaticData r = results.get(0);
+        StaticData s = pm.getObjectById(StaticData.class, menuName);
 
         StaticDataInfo sd = new StaticDataInfo();
-
-        sd.setMenuName(r.getMenuName());
-        sd.setMenuDescription(r.getMenuDescription());
+        sd.setMenuName(s.getMenuName());
+        sd.setMenuDescription(s.getMenuDescription());
         return sd;
     }
 }

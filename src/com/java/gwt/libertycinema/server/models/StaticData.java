@@ -8,6 +8,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 
 @PersistenceCapable
@@ -30,6 +31,7 @@ public class StaticData {
         this.menuName = menuName;
         this.menuDescription = menuDescription;
         this.setLastUpdated(new Date());
+        this.setKey(KeyFactory.createKey(StaticData.class.getSimpleName(), menuName));
     }
 
     // Accessors for the fields. JDO doesn't use these, but your application does.
