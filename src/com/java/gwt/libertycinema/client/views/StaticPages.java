@@ -11,7 +11,8 @@ import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.TextBox;
@@ -25,7 +26,6 @@ import com.java.gwt.libertycinema.shared.StaticDataInfo;
 public class StaticPages implements Command {
 
     private BodyPanel body;
-    private HorizontalPanel existingDataMenu = new HorizontalPanel();
     private ListBox dropDown = new ListBox();
     private RichTextArea menuDescription = new RichTextArea();
     private TextBox menuName = new TextBox();
@@ -39,28 +39,29 @@ public class StaticPages implements Command {
         menuName.setText(name);
         menuDescription.setHTML(Description);
     }
-    
+
     public void setupEditor() {
-        body.add(menuName);
-        body.add(menuDescription);
-        body.add(submitButton);
-        submitButton.addClickHandler(new SaveHandler());
-    }
-    
-    public void setupOptions() {
-        existingDataMenu.add(dropDown);
-        body.add(existingDataMenu);
+        Grid grid = new Grid(4, 2);
+        grid.setWidget(0, 0, new Label("Pick a menu item:"));
+        grid.setWidget(0, 1, dropDown);
+        grid.setWidget(1, 0, new Label("Menu Name:"));
+        grid.setWidget(1, 1, menuName);
+        grid.setWidget(2, 0, new Label("Menu Description:"));
+        grid.setWidget(2, 1, menuDescription);
+        grid.setWidget(3, 1, submitButton);
+
+        body.add(grid);
         updateMenuList();
+        submitButton.addClickHandler(new SaveHandler());
         dropDown.addChangeHandler(new EditHandler());
     }
-    
+
     @Override
     public void execute() {
         body.clear();
-        setupOptions();
         setupEditor();
     }
-    
+
     public void updateMenuList() {
         StaticDataServiceAsync sdService =
                 (StaticDataServiceAsync) GWT.create(StaticDataService.class);
@@ -80,7 +81,7 @@ public class StaticPages implements Command {
             }
         });
     }
-    
+
     private class SaveHandler implements ClickHandler {
 
         @Override
@@ -99,7 +100,7 @@ public class StaticPages implements Command {
             });
         }
     }
-    
+
     private class EditHandler implements ChangeHandler {
 
         @Override
