@@ -35,16 +35,6 @@
     <servlet-name>putImage</servlet-name>
     <url-pattern>/libertycinema/putimage</url-pattern>
   </servlet-mapping>
-
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.java.gwt.libertycinema.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/libertycinema/greet</url-pattern>
-  </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
