@@ -1,10 +1,16 @@
 package com.java.gwt.libertycinema.client.views;
 
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 
 import com.java.gwt.libertycinema.client.BodyPanel;
+import com.java.gwt.libertycinema.client.services.StaticDataService;
+import com.java.gwt.libertycinema.client.services.StaticDataServiceAsync;
+import com.java.gwt.libertycinema.shared.StaticDataInfo;
 
 
 public class HomeLinkCommand implements Command {
@@ -12,18 +18,25 @@ public class HomeLinkCommand implements Command {
     BodyPanel body;
 
     public HomeLinkCommand(BodyPanel body) {
-	this.body = body;
+        this.body = body;
     }
 
     public void execute() {
-	body.getBodyPanel().clear();
-	body.getBodyPanel().add(new HTML("test"));
-	body.getBodyPanel().add(new HTML("test5"));
+        body.getBodyPanel().clear();
+        getHomeScreenData();
     }
 
     public void getHomeScreenData() {
-    }
+        StaticDataServiceAsync sdService =
+                (StaticDataServiceAsync) GWT.create(StaticDataService.class);
+        sdService.getMenuItem("Home", new AsyncCallback<StaticDataInfo> () {
+            public void onFailure(Throwable caught) {
+                Window.alert(caught.toString());
+            }
 
-    public void getHomeScreenPanel() {
+            public void onSuccess(StaticDataInfo data) {
+                body.add(new HTML(data.getMenuDescription()));
+            }
+        });
     }
 }
