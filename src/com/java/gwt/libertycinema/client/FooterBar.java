@@ -9,7 +9,7 @@ public class FooterBar extends Composite {
 
     private Label footer = new Label("Copyright Liberty Cinema (2012)");
 
-    public FooterBar(MainPanel mainPanel) {
+    public FooterBar(BaseLayout baseLayout) {
         initWidget(footer);
     }
 
