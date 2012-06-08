@@ -4,13 +4,13 @@ package com.java.gwt.libertycinema.client;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 
-public class BodyPanel extends VerticalPanel {
+public class MainPanel extends VerticalPanel {
 
-    public BodyPanel() {
+    public MainPanel() {
         super();
     }
 
-    public BodyPanel getBodyPanel() {
+    public MainPanel getBodyPanel() {
         return this;
     }
 }

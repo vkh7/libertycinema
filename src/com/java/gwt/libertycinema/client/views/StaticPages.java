@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.TextBox;
 
-import com.java.gwt.libertycinema.client.BodyPanel;
+import com.java.gwt.libertycinema.client.MainPanel;
 import com.java.gwt.libertycinema.client.services.StaticDataService;
 import com.java.gwt.libertycinema.client.services.StaticDataServiceAsync;
 import com.java.gwt.libertycinema.shared.StaticDataInfo;
@@ -25,13 +25,13 @@ import com.java.gwt.libertycinema.shared.StaticDataInfo;
 
 public class StaticPages implements Command {
 
-    private BodyPanel body;
+    private MainPanel body;
     private ListBox dropDown = new ListBox();
     private RichTextArea menuDescription = new RichTextArea();
     private TextBox menuName = new TextBox();
     private Button submitButton = new Button("Save Changes");
 
-    public StaticPages(BodyPanel body) {
+    public StaticPages(MainPanel body) {
         this.body = body;
     }
 
