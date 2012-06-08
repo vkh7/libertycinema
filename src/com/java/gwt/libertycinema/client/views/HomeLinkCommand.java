@@ -22,7 +22,7 @@ public class HomeLinkCommand implements Command {
     }
 
     public void execute() {
-        body.getBodyPanel().clear();
+        body.getMainPanel().clear();
         getHomeScreenData();
     }
 

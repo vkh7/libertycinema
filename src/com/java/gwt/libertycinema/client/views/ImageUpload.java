@@ -75,7 +75,7 @@ public class ImageUpload implements Command {
         	}
         });
         
-        body.getBodyPanel().clear();
-        body.getBodyPanel().add(form);
+        body.getMainPanel().clear();
+        body.getMainPanel().add(form);
     }
 }
