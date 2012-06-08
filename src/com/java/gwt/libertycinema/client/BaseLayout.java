@@ -13,7 +13,7 @@ public class BaseLayout extends Composite {
 
     public BaseLayout() {
         headerBar = new HeaderBar(this);
-        footerBar = new FooterBar();
+        footerBar = new FooterBar(this);
         mainPanel = new MainPanel(this);
 
         layout.addNorth(headerBar, 5);
