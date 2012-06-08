@@ -18,7 +18,7 @@ public class PutImageServlet extends HttpServlet {
         String description = request.getParameter("description");
         // byte[] bytes = request.getHeader(arg0)
         
-        Image image = new Image(title, description);
+        Image image = new Image(title, description, null);
         
         PersistenceManager pm = PMF.get().getPersistenceManager();
         pm.makePersistent(image);        
