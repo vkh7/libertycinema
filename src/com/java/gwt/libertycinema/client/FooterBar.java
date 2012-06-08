@@ -1,23 +1,23 @@
 package com.java.gwt.libertycinema.client;
 
 
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
 
 
-public class FooterBar {
+public class FooterBar extends Composite {
 
-    private VerticalPanel body;
+    private Label footer = new Label("Copyright Liberty Cinema (2012)");
 
-    private HorizontalPanel panel = new HorizontalPanel();
-
-    public FooterBar(VerticalPanel body) {
-	this.body = body;
+    public FooterBar() {
+        initWidget(footer);
     }
 
-    public HTML getFooterPanel() {
-	HTML html = new HTML("Copyright Liberty Cinema (2012)");
-	return html;
+    public Label getFooter() {
+        return footer;
+    }
+
+    public void setFooter(Label footer) {
+        this.footer = footer;
     }
 }
