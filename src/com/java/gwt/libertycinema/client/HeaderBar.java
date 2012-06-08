@@ -92,7 +92,7 @@ public class HeaderBar extends Composite {
 
     private void setUpAdminMenu() {
         adminMenu.addItem("Static Pages", new StaticPages(baseLayout));
-        adminMenu.addItem("Images", new ImageUpload(baseLayout));
+        // adminMenu.addItem("Images", new ImageUpload(baseLayout));
     }
 
     public BaseLayout getBaseLayout() {
