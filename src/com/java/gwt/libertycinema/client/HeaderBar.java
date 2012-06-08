@@ -72,8 +72,6 @@ public class HeaderBar extends Composite {
     }
 
     private MenuBar getAdminMenu() {
-        adminMenu.addItem("Static Pages", new StaticPages(mainPanel));
-        adminMenu.addItem("Images", new ImageUpload(mainPanel));
         return adminMenu;
     }
 
