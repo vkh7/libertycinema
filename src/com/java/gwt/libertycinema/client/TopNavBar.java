@@ -6,8 +6,7 @@ import java.lang.Throwable;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -31,44 +30,47 @@ public class TopNavBar {
         this.body = body;
     }
 
-    private MenuBar setUpTopNavButtons() {
-    	menu.addItem("Home", new HomeLinkCommand(body));
-    	menu.addItem("Gallery", new HomeLinkCommand(body));
-    	menu.addItem("Testimonials", new HomeLinkCommand(body));
-    	menu.addItem("Permissions", new HomeLinkCommand(body));
-    	menu.addItem("Technical Details", new HomeLinkCommand(body));
-    	menu.addItem("Contact Us", new HomeLinkCommand(body));
-    
-    	LoginServiceAsync loginService = GWT.create(LoginService.class);
-    	loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo> () {
-    		public void onFailure(Throwable e) {
-    		    Window.alert("Ajax request failed, couldn't load admin module");
-    		}
-    		public void onSuccess(LoginInfo loginInfo) {
-    		    if(loginInfo.isAdminUser()) {
-    		        menu.addItem("Admin", getAdminMenu());
-    		    }
-    		}
-    	    });
-    	return menu;
+    private void setUpTopNavButtons() {
+        menu.addItem("Home", new HomeLinkCommand(body));
+        menu.addItem("Gallery", new HomeLinkCommand(body));
+        menu.addItem("Testimonials", new HomeLinkCommand(body));
+        menu.addItem("Permissions", new HomeLinkCommand(body));
+        menu.addItem("Technical Details", new HomeLinkCommand(body));
+        menu.addItem("Contact Us", new HomeLinkCommand(body));
+
+        LoginServiceAsync loginService = GWT.create(LoginService.class);
+        loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo> () {
+                public void onFailure(Throwable e) {
+                    Window.alert("Ajax request failed, couldn't load admin module");
+                }
+
+                public void onSuccess(LoginInfo loginInfo) {
+                    if(loginInfo.isAdminUser()) {
+                        Window.alert(loginInfo.getLoginUrl());
+                        menu.addItem("Admin", getAdminMenu());
+                    }
+                }
+            });
+        headerPanel.add(menu);
     }
 
-    private HorizontalPanel setUpTopNavLogo() {
-        HorizontalPanel logoPanel = new HorizontalPanel();
-    	logoPanel.add(new HTML("<h2>Liberty Cinema</h2>"));
-    	return logoPanel;
+    private void setUpTopNavLogo() {
+        Label header = new Label("Liberty Cinema");
+        headerPanel.add(header);
     }
 
     public VerticalPanel getTopBarPanel() {
-    	headerPanel.add(setUpTopNavLogo());
-    	headerPanel.add(setUpTopNavButtons());
-    	return headerPanel;
+        setUpTopNavLogo();
+        setUpTopNavButtons();
+        headerPanel.setWidth("100%");
+        headerPanel.setStyleName("topNavDiv");
+        return headerPanel;
     }
 
-    public MenuBar getAdminMenu() {
-    	MenuBar adminMenu = new MenuBar(true);
-    	adminMenu.addItem("Static Pages", new StaticPages(body));
-    	adminMenu.addItem("Images", new ImageUpload(body));
-    	return adminMenu;
+    private MenuBar getAdminMenu() {
+        MenuBar adminMenu = new MenuBar(true);
+        adminMenu.addItem("Static Pages", new StaticPages(body));
+        adminMenu.addItem("Images", new ImageUpload(body));
+        return adminMenu;
     }
 }
