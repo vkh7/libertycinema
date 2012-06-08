@@ -11,7 +11,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-import com.java.gwt.libertycinema.client.MainPanel;
+import com.java.gwt.libertycinema.client.BaseLayout;
 import com.java.gwt.libertycinema.client.services.LoginService;
 import com.java.gwt.libertycinema.client.services.LoginServiceAsync;
 import com.java.gwt.libertycinema.client.views.HomeLinkCommand;
@@ -22,29 +22,20 @@ import com.java.gwt.libertycinema.shared.LoginInfo;
 
 public class HeaderBar extends Composite {
 
+    private BaseLayout baseLayout;
     private VerticalPanel headerPanel = new VerticalPanel();
     private Label mainLogo = new Label("Liberty Cinema - Mumbai");
     private final MenuBar mainMenu = new MenuBar();
     private MenuBar adminMenu = new MenuBar(true);
 
-    private MainPanel mainPanel;
-
-    public HeaderBar(MainPanel mainPanel) {
-        this.mainPanel = mainPanel;
+    public HeaderBar(BaseLayout baseLayout) {
+        this.setBaseLayout(baseLayout);
         setUpMainMenu();
         headerPanel.add(mainLogo);
         headerPanel.add(mainMenu);
         headerPanel.setWidth("100%");
         headerPanel.setStyleName("topNavDiv");
         initWidget(headerPanel);
-    }
-
-    public MainPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public void setMainPanel(MainPanel mainPanel) {
-        this.mainPanel = mainPanel;
     }
 
     public VerticalPanel getHeaderPanel() {
@@ -76,13 +67,13 @@ public class HeaderBar extends Composite {
     }
 
     private void setUpMainMenu() {
-        mainMenu.addItem("Home", new HomeLinkCommand(mainPanel));
-        mainMenu.addItem("Gallery", new HomeLinkCommand(mainPanel));
-        mainMenu.addItem("Testimonials", new HomeLinkCommand(mainPanel));
-        mainMenu.addItem("Permissions", new HomeLinkCommand(mainPanel));
-        mainMenu.addItem("Technical Details", new HomeLinkCommand(mainPanel));;
-        mainMenu.addItem("Contact Us", new HomeLinkCommand(mainPanel));
-        mainMenu.addItem("Login", new HomeLinkCommand(mainPanel));
+        mainMenu.addItem("Home", new HomeLinkCommand(baseLayout));
+        mainMenu.addItem("Gallery", new HomeLinkCommand(baseLayout));
+        mainMenu.addItem("Testimonials", new HomeLinkCommand(baseLayout));
+        mainMenu.addItem("Permissions", new HomeLinkCommand(baseLayout));
+        mainMenu.addItem("Technical Details", new HomeLinkCommand(baseLayout));;
+        mainMenu.addItem("Contact Us", new HomeLinkCommand(baseLayout));
+        mainMenu.addItem("Login", new HomeLinkCommand(baseLayout));
 
         LoginServiceAsync loginService = GWT.create(LoginService.class);
         loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo> () {
@@ -100,7 +91,15 @@ public class HeaderBar extends Composite {
     }
 
     private void setUpAdminMenu() {
-        adminMenu.addItem("Static Pages", new StaticPages(mainPanel));
-        adminMenu.addItem("Images", new ImageUpload(mainPanel));
+        adminMenu.addItem("Static Pages", new StaticPages(baseLayout));
+        adminMenu.addItem("Images", new ImageUpload(baseLayout));
+    }
+
+    public BaseLayout getBaseLayout() {
+        return baseLayout;
+    }
+
+    public void setBaseLayout(BaseLayout baseLayout) {
+        this.baseLayout = baseLayout;
     }
 }
