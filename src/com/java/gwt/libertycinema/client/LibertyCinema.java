@@ -14,7 +14,7 @@ public class LibertyCinema implements EntryPoint {
     private DockLayoutPanel main = new DockLayoutPanel(Unit.EM);
     private BodyPanel body = new BodyPanel();
 
-    private FooterBar footer;
+    // private FooterBar footer;
     private TopNavBar header;
 
     public void onModuleLoad() {
@@ -22,12 +22,9 @@ public class LibertyCinema implements EntryPoint {
         header = new TopNavBar(body);
         main.addNorth(header.getTopBarPanel(), 7);
 
-        // Setup footer
-        footer = new FooterBar(body);
-        main.addSouth(footer.getFooterPanel(), 2);
-
         // Setup main
         main.add(body);
+        main.setStyleName("mainDiv");
 
         RootLayoutPanel.get().add(main);
     }
