@@ -5,9 +5,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HTML;
 
-import com.java.gwt.libertycinema.client.MainPanel;
+import com.java.gwt.libertycinema.client.BaseLayout;
 import com.java.gwt.libertycinema.client.services.StaticDataService;
 import com.java.gwt.libertycinema.client.services.StaticDataServiceAsync;
 import com.java.gwt.libertycinema.shared.StaticDataInfo;
@@ -15,14 +14,14 @@ import com.java.gwt.libertycinema.shared.StaticDataInfo;
 
 public class HomeLinkCommand implements Command {
 
-    MainPanel body;
+    BaseLayout baseLayout;
 
-    public HomeLinkCommand(MainPanel body) {
-        this.body = body;
+    public HomeLinkCommand(BaseLayout baseLayout) {
+        this.baseLayout = baseLayout;
     }
 
     public void execute() {
-        body.getMainPanel().clear();
+        // baseLayout.getMainPanel().clear();
         getHomeScreenData();
     }
 
@@ -35,7 +34,7 @@ public class HomeLinkCommand implements Command {
             }
 
             public void onSuccess(StaticDataInfo data) {
-                body.add(new HTML(data.getMenuDescription()));
+                // baseLayout.add(new HTML(data.getMenuDescription()));
             }
         });
     }

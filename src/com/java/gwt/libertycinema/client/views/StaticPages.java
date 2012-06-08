@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.TextBox;
 
-import com.java.gwt.libertycinema.client.MainPanel;
+import com.java.gwt.libertycinema.client.BaseLayout;
 import com.java.gwt.libertycinema.client.services.StaticDataService;
 import com.java.gwt.libertycinema.client.services.StaticDataServiceAsync;
 import com.java.gwt.libertycinema.shared.StaticDataInfo;
@@ -25,14 +25,14 @@ import com.java.gwt.libertycinema.shared.StaticDataInfo;
 
 public class StaticPages implements Command {
 
-    private MainPanel body;
+    private BaseLayout baseLayout;
     private ListBox dropDown = new ListBox();
     private RichTextArea menuDescription = new RichTextArea();
     private TextBox menuName = new TextBox();
     private Button submitButton = new Button("Save Changes");
 
-    public StaticPages(MainPanel body) {
-        this.body = body;
+    public StaticPages(BaseLayout baseLayout) {
+        this.baseLayout = baseLayout;
     }
 
     public void updateEditor(String name, String Description) {
@@ -50,7 +50,7 @@ public class StaticPages implements Command {
         grid.setWidget(2, 1, menuDescription);
         grid.setWidget(3, 1, submitButton);
 
-        body.add(grid);
+        // body.add(grid);
         updateMenuList();
         submitButton.addClickHandler(new SaveHandler());
         dropDown.addChangeHandler(new EditHandler());
@@ -58,7 +58,7 @@ public class StaticPages implements Command {
 
     @Override
     public void execute() {
-        body.clear();
+        // body.clear();
         setupEditor();
     }
 
