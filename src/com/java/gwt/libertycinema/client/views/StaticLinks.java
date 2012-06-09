@@ -12,11 +12,11 @@ import com.java.gwt.libertycinema.client.services.StaticDataServiceAsync;
 import com.java.gwt.libertycinema.shared.StaticDataInfo;
 
 
-public class HomeLinkCommand implements Command {
+public class StaticLinks implements Command {
 
     BaseLayout baseLayout;
 
-    public HomeLinkCommand(BaseLayout baseLayout) {
+    public StaticLinks(BaseLayout baseLayout) {
         this.baseLayout = baseLayout;
     }
 

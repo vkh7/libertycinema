@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.java.gwt.libertycinema.client.BaseLayout;
 import com.java.gwt.libertycinema.client.services.LoginService;
 import com.java.gwt.libertycinema.client.services.LoginServiceAsync;
-import com.java.gwt.libertycinema.client.views.HomeLinkCommand;
+import com.java.gwt.libertycinema.client.views.StaticLinks;
 import com.java.gwt.libertycinema.client.views.ImageUpload;
 import com.java.gwt.libertycinema.client.views.StaticPages;
 import com.java.gwt.libertycinema.shared.LoginInfo;
@@ -67,13 +67,13 @@ public class HeaderBar extends Composite {
     }
 
     private void setUpMainMenu() {
-        mainMenu.addItem("Home", new HomeLinkCommand(baseLayout));
-        mainMenu.addItem("Gallery", new HomeLinkCommand(baseLayout));
-        mainMenu.addItem("Testimonials", new HomeLinkCommand(baseLayout));
-        mainMenu.addItem("Permissions", new HomeLinkCommand(baseLayout));
-        mainMenu.addItem("Technical Details", new HomeLinkCommand(baseLayout));;
-        mainMenu.addItem("Contact Us", new HomeLinkCommand(baseLayout));
-        mainMenu.addItem("Login", new HomeLinkCommand(baseLayout));
+        mainMenu.addItem("Home", new StaticLinks(baseLayout));
+        mainMenu.addItem("Gallery", new StaticLinks(baseLayout));
+        mainMenu.addItem("Testimonials", new StaticLinks(baseLayout));
+        mainMenu.addItem("Permissions", new StaticLinks(baseLayout));
+        mainMenu.addItem("Technical Details", new StaticLinks(baseLayout));;
+        mainMenu.addItem("Contact Us", new StaticLinks(baseLayout));
+        mainMenu.addItem("Login", new StaticLinks(baseLayout));
 
         LoginServiceAsync loginService = GWT.create(LoginService.class);
         loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo> () {
