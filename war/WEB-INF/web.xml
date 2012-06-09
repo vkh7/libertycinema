@@ -27,12 +27,12 @@
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>putImage</servlet-name>
-    <servlet-class>com.java.gwt.libertycinema.server.PutImageServlet</servlet-class>
+    <servlet-name>uploadImage</servlet-name>
+    <servlet-class>com.java.gwt.libertycinema.server.UploadImageServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>putImage</servlet-name>
+    <servlet-name>uploadImage</servlet-name>
     <url-pattern>/libertycinema/putimage</url-pattern>
   </servlet-mapping>
   

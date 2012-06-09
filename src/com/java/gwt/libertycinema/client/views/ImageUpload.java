@@ -28,7 +28,7 @@ public class ImageUpload implements Command {
     }
 
     public void execute() {
-        form.setAction("/libertycinema/putimage");
+        form.setAction("/libertycinema/uploadimage");
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
         form.setMethod(FormPanel.METHOD_POST);
 
