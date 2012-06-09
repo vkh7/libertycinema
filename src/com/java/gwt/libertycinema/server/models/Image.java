@@ -31,9 +31,13 @@ public class Image {
     @Persistent
     private Blob image;
 
-    public Image(String title, String description, Blob image) {
-        this.title = title;
-        this.description = description;
+    @Persistent
+    private String imageType;
+
+    public Image(String title, String description, Blob image, String imageType) {
+        this.setTitle(title);
+        this.setDescription(description);
+        this.setImageType(imageType);
         this.setImage(image);
         this.setUpdated(new Date());
         this.setKey(KeyFactory.createKey(Image.class.getSimpleName(), title));
@@ -82,5 +86,13 @@ public class Image {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
     }
 }

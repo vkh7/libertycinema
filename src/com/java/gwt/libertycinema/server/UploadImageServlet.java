@@ -26,6 +26,7 @@ public class UploadImageServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         String title = null;
         String description = null;
+        String imageType = null;
         Blob imageBlob = null;
 
         ServletFileUpload upload = new ServletFileUpload();
@@ -33,16 +34,17 @@ public class UploadImageServlet extends HttpServlet {
             FileItemIterator iter = upload.getItemIterator(request);
             while (iter.hasNext()) {
                 FileItemStream item = iter.next();
-                if (item.getFieldName().equals("image") && !item.isFormField()) {
+                if (item.getFieldName().equals("image") && item.isFormField()) {
                     imageBlob = new Blob(IOUtils.toByteArray(item.openStream()));
-                } else if (item.getFieldName().equals("title")  && item.isFormField()) {
+                    imageType = item.getContentType();
+                } else if (item.getFieldName().equals("title") && item.isFormField()) {
                     title = Streams.asString(item.openStream());
-                } else if (item.getFieldName().equals("description")  && item.isFormField()) {
+                } else if (item.getFieldName().equals("description") && item.isFormField()) {
                     description = Streams.asString(item.openStream());
                 }
             }
 
-            Image image = new Image(title, description, imageBlob);
+            Image image = new Image(title, description, imageBlob, imageType);
             PersistenceManager pm = PMF.get().getPersistenceManager();
             pm.makePersistent(image);
             pm.close();
