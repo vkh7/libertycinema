@@ -26,19 +26,18 @@ public class UploadImageServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         String title = null;
         String description = null;
-        Blob imageBlob = null; 
+        Blob imageBlob = null;
 
         ServletFileUpload upload = new ServletFileUpload();
-        FileItemIterator iter;
         try {
-            iter = upload.getItemIterator(request);
+            FileItemIterator iter = upload.getItemIterator(request);
             while (iter.hasNext()) {
                 FileItemStream item = iter.next();
-                if (!item.isFormField() && item.getFieldName() == "image") {
+                if (item.getFieldName().equals("image") && !item.isFormField()) {
                     imageBlob = new Blob(IOUtils.toByteArray(item.openStream()));
-                } else if (item.isFormField() && item.getFieldName() == "title") {
+                } else if (item.getFieldName().equals("title")  && item.isFormField()) {
                     title = Streams.asString(item.openStream());
-                } else if (item.isFormField() && item.getFieldName() == "description") {
+                } else if (item.getFieldName().equals("description")  && item.isFormField()) {
                     description = Streams.asString(item.openStream());
                 }
             }
@@ -53,6 +52,5 @@ public class UploadImageServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
