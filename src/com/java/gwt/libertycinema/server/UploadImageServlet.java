@@ -34,7 +34,7 @@ public class UploadImageServlet extends HttpServlet {
             FileItemIterator iter = upload.getItemIterator(request);
             while (iter.hasNext()) {
                 FileItemStream item = iter.next();
-                if (item.getFieldName().equals("image") && item.isFormField()) {
+                if (item.getFieldName().equals("image") && !item.isFormField()) {
                     imageBlob = new Blob(IOUtils.toByteArray(item.openStream()));
                     imageType = item.getContentType();
                 } else if (item.getFieldName().equals("title") && item.isFormField()) {
