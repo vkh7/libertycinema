@@ -21,8 +21,7 @@ public class MainPanel extends Composite {
         contentHolder.setStyleName("contentMain");
         verticalPanel.add(title);
         verticalPanel.setStyleName("contentTable");
-        setTitle("test");
-        setContent(verticalPanel);
+        contentHolder.add(verticalPanel);
         initWidget(contentHolder);
     }
 
@@ -30,9 +29,12 @@ public class MainPanel extends Composite {
         this.title.setText(title);
     }
 
+    public void clearContent() {
+        verticalPanel.clear();
+    }
+
     public void setContent(Widget widget) {
-        contentHolder.clear();
-        contentHolder.setWidget(widget);
+        verticalPanel.add(widget);
     }
 
     public BaseLayout getBaseLayout() {
