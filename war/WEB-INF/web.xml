@@ -25,17 +25,27 @@
     <servlet-name>staticdataService</servlet-name>
     <url-pattern>/libertycinema/staticdata</url-pattern>
   </servlet-mapping>
-  
+
   <servlet>
     <servlet-name>uploadImage</servlet-name>
     <servlet-class>com.java.gwt.libertycinema.server.UploadImageServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>uploadImage</servlet-name>
-    <url-pattern>/libertycinema/uploadimage</url-pattern>
+    <servlet-name>getImage</servlet-name>
+    <url-pattern>/libertycinema/getimage</url-pattern>
   </servlet-mapping>
-  
+
+    <servlet>
+    <servlet-name>getImage</servlet-name>
+    <servlet-class>com.java.gwt.libertycinema.server.GetImageServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>getImage</servlet-name>
+    <url-pattern>/libertycinema/getimage</url-pattern>
+  </servlet-mapping>
+
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>LibertyCinema.html</welcome-file>
