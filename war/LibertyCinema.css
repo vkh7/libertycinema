@@ -47,8 +47,8 @@ table.contentTable{
 
 div.contentTitle {
   width: 100%;
+  margin-bottom: 2%;
   font-size: 1.5em;
-  border-bottom-size: 2px;
   border-bottom-style: solid;
   border-bottom-color: #C8C8C8;
 }
