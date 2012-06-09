@@ -14,10 +14,10 @@ import com.java.gwt.libertycinema.server.models.PMF;
 public class GetImageServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String title = request.getParameter("title");
-        if (title != null) {
+        String key = request.getParameter("id");
+        if (key != null) {
             PersistenceManager pm = PMF.get().getPersistenceManager();
-            Image image = pm.getObjectById(Image.class, title);
+            Image image = pm.getObjectById(Image.class, key);
             if (image != null) {
                 response.setContentType(image.getImageType());
                 response.getOutputStream().write(image.getImage());
