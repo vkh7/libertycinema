@@ -2,13 +2,16 @@ body {
   background-color: white;
 }
 
-div.mainDiv {
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-top: 2%;
+table.topNavTable {
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-table.topNavDiv{
+div.topMainLogo {
+  border: 1px solid #C8C8C8;
+  border-bottom-width: 0px;
+  font-size: 1.5em;
 }
 
 .gwt-MenuBar, .gwt-MenuBar-Horizontal {
@@ -28,14 +31,4 @@ table.topNavDiv{
   cursor: pointer;
   background-color: white;
   border: 1px solid #C8C8C8;
-}
-
-.header {
-  width:100%;
-  border: 1px C8C8C8;
-}
-
-.top_nav_div {
-  background-color: white;
-  border: 1px #C0C0C0;
 }

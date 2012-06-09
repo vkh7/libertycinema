@@ -33,8 +33,9 @@ public class HeaderBar extends Composite {
         setUpMainMenu();
         headerPanel.add(mainLogo);
         headerPanel.add(mainMenu);
-        headerPanel.setWidth("100%");
-        headerPanel.setStyleName("topNavDiv");
+        mainLogo.setStyleName("topMainLogo");
+        headerPanel.setWidth("80%");
+        headerPanel.setStyleName("topNavTable");
         initWidget(headerPanel);
     }
 
