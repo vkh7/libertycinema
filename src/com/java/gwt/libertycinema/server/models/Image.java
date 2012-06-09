@@ -31,7 +31,7 @@ public class Image {
     @Persistent
     private Blob image;
 
-    public Image(String title, String description, byte[] image) {
+    public Image(String title, String description, Blob image) {
         this.title = title;
         this.description = description;
         this.setImage(image);
@@ -56,8 +56,8 @@ public class Image {
         }
     }
 
-    public void setImage(byte[] bytes) {
-        this.image = new Blob(bytes);
+    public void setImage(Blob image) {
+        this.image = image;
     }
 
     public String getTitle() {
