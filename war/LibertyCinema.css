@@ -2,8 +2,7 @@ body {
   background-color: white;
 }
 
-// HeaderBar
-.topNavTable {
+table.topNavTable {
   margin-top: 1em;
   margin-left: 10%;
   margin-right: 10%;
@@ -33,4 +32,23 @@ div.topMainLogo {
   cursor: pointer;
   background-color: white;
   border: 1px solid #C8C8C8;
+}
+
+div.contentMain {
+  width: 80%;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+table.contentTable{
+  width: 100%;
+}
+
+div.contentTitle {
+  width: 100%;
+  font-size: 1.5em;
+  border-bottom-size: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: #C8C8C8;
 }
