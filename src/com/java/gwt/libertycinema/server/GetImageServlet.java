@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.java.gwt.libertycinema.server.models.Image;
+import com.java.gwt.libertycinema.server.models.GalleryImage;
 import com.java.gwt.libertycinema.server.models.PMF;
 
 @SuppressWarnings("serial")
@@ -17,7 +17,7 @@ public class GetImageServlet extends HttpServlet {
         String key = request.getParameter("id");
         if (key != null) {
             PersistenceManager pm = PMF.get().getPersistenceManager();
-            Image image = pm.getObjectById(Image.class, key);
+            GalleryImage image = pm.getObjectById(GalleryImage.class, key);
             if (image != null) {
                 response.setContentType(image.getImageType());
                 response.getOutputStream().write(image.getImage());

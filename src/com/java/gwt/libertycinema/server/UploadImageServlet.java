@@ -16,7 +16,7 @@ import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.IOUtils;
 
 import com.google.appengine.api.datastore.Blob;
-import com.java.gwt.libertycinema.server.models.Image;
+import com.java.gwt.libertycinema.server.models.GalleryImage;
 import com.java.gwt.libertycinema.server.models.PMF;
 
 
@@ -44,7 +44,7 @@ public class UploadImageServlet extends HttpServlet {
                 }
             }
 
-            Image image = new Image(title, description, imageBlob, imageType);
+            GalleryImage image = new GalleryImage(title, description, imageBlob, imageType);
             PersistenceManager pm = PMF.get().getPersistenceManager();
             pm.makePersistent(image);
             pm.close();

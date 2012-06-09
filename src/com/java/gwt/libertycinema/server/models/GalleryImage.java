@@ -13,7 +13,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 
 @PersistenceCapable
-public class Image {
+public class GalleryImage {
 
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -34,13 +34,13 @@ public class Image {
     @Persistent
     private String imageType;
 
-    public Image(String title, String description, Blob image, String imageType) {
+    public GalleryImage(String title, String description, Blob image, String imageType) {
         this.setTitle(title);
         this.setDescription(description);
         this.setImageType(imageType);
         this.setImage(image);
         this.setUpdated(new Date());
-        this.setKey(KeyFactory.createKey(Image.class.getSimpleName(), title));
+        this.setKey(KeyFactory.createKey(GalleryImage.class.getSimpleName(), title));
     }
 
     // Accessors for the fields. JDO doesn't use these, but your application does.
