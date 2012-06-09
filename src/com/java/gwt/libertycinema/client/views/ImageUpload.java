@@ -15,23 +15,20 @@ import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 
+import com.java.gwt.libertycinema.client.BaseLayout;
 import com.java.gwt.libertycinema.client.MainPanel;
 
 
 public class ImageUpload implements Command {
 
-    private final MainPanel body;
+    private final BaseLayout baseLayout;
     private final FormPanel form = new FormPanel();
 
-    public ImageUpload(MainPanel body) {
-        this.body = body;
+    public ImageUpload(BaseLayout baseLayout) {
+        this.baseLayout = baseLayout;
     }
 
     public void execute() {
-        setupUploadForm(body);
-    }
-
-    private void setupUploadForm(MainPanel body) {
         form.setAction("/libertycinema/putimage");
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
         form.setMethod(FormPanel.METHOD_POST);
@@ -70,12 +67,13 @@ public class ImageUpload implements Command {
         });
         
         form.addSubmitCompleteHandler(new FormPanel.SubmitCompleteHandler() {
-        	public void onSubmitComplete(SubmitCompleteEvent event) {
+            public void onSubmitComplete(SubmitCompleteEvent event) {
         
-        	}
+            }
         });
         
-        body.getMainPanel().clear();
-        body.getMainPanel().add(form);
+        baseLayout.getMainPanel().setTitle("Image Uploads");
+        baseLayout.getMainPanel().setContent(form);
     }
+
 }
