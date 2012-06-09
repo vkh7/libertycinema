@@ -53,3 +53,8 @@ div.contentTitle {
   border-bottom-color: #C8C8C8;
   border-bottom-width: 1px;
 }
+
+button.gwt-Button {
+  background-color: #E8E8E8;
+  border: 1px solid #C8C8C8;
+}
