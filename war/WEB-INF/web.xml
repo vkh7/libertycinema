@@ -33,7 +33,7 @@
 
   <servlet-mapping>
     <servlet-name>uploadImage</servlet-name>
-    <url-pattern>/libertycinema/putimage</url-pattern>
+    <url-pattern>/libertycinema/uploadimage</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
