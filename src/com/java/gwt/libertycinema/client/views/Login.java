@@ -12,6 +12,6 @@ public class Login implements Command {
     }
     @Override
     public void execute() {
-        Window.open(loginUrl, "_self", "");
+        Window.Location.assign(loginUrl);
     }
 }

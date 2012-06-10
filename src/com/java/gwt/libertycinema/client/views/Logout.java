@@ -12,6 +12,6 @@ public class Logout implements Command {
     }
     @Override
     public void execute() {
-        Window.open(logoutUrl, "_self", "");
+        Window.Location.assign(logoutUrl);
     }
 }
