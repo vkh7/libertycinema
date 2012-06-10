@@ -4,6 +4,7 @@ package com.java.gwt.libertycinema.client.views;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
@@ -30,6 +31,7 @@ public class ImageUpload implements Command {
     }
 
     public void execute() {
+        baseLayout.getMainPanel().clearContent();
         form.setAction("/libertycinema/uploadimage");
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
         form.setMethod(FormPanel.METHOD_POST);
@@ -83,6 +85,7 @@ public class ImageUpload implements Command {
 
         baseLayout.getMainPanel().setTitle("Image Uploads");
         baseLayout.getMainPanel().setContent(form);
+        History.newItem("image-upload");
     }
 
 }
