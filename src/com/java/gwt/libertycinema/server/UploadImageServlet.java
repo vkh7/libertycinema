@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.IOUtils;
 
 import com.google.appengine.api.datastore.Blob;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.java.gwt.libertycinema.server.models.GalleryImage;
 import com.java.gwt.libertycinema.server.models.PMF;
 
@@ -49,7 +50,7 @@ public class UploadImageServlet extends HttpServlet {
             PersistenceManager pm = PMF.get().getPersistenceManager();
             pm.makePersistent(image);
             pm.close();
-            response.getWriter().println(image.getKey());
+            response.getWriter().write(KeyFactory.keyToString(image.getKey()));
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
