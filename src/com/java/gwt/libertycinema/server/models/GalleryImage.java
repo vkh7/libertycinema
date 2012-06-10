@@ -104,8 +104,12 @@ public class GalleryImage {
         this.imageType = imageType;
     }
 
-    public Blob getThumbnail() {
-        return thumbnail;
+    public byte[] getThumbnail() {
+        if (image == null) {
+            return null;
+        } else {
+            return thumbnail.getBytes();
+        }
     }
 
     public void setThumbnail(Blob thumbnail) {
