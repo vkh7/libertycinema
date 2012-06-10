@@ -84,7 +84,7 @@ public class HeaderBar extends Composite {
                 public void onSuccess(LoginInfo loginInfo) {
                     if(loginInfo.isAdminUser()) {
                         setUpAdminMenu();
-                        mainMenu.addItem("Logout", new Logout(loginInfo.getLoginUrl()));
+                        mainMenu.addItem("Logout", new Logout(loginInfo.getLogoutUrl()));
                         mainMenu.addItem("Admin", getAdminMenu());
                     } else {
                         mainMenu.addItem("Login", new Logout(loginInfo.getLoginUrl()));
