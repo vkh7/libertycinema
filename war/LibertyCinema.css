@@ -57,4 +57,11 @@ div.contentTitle {
 button.gwt-Button {
   background-color: #E8E8E8;
   border: 1px solid #C8C8C8;
+  cursor: pointer;
+}
+
+.validationError {
+  background-color: red;
+  font-style: italic;
+  font-size: 0.75em;
 }
