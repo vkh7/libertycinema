@@ -4,6 +4,10 @@ package com.java.gwt.libertycinema.server.models;
 import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.images.Image;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.Transform;
 
 import java.util.Date;
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -32,6 +36,9 @@ public class GalleryImage {
     private Blob image;
 
     @Persistent
+    private Blob thumbnail;
+
+    @Persistent
     private String imageType;
 
     public GalleryImage(String title, String description, Blob image, String imageType) {
@@ -41,6 +48,7 @@ public class GalleryImage {
         this.setImage(image);
         this.setUpdated(new Date());
         this.setKey(KeyFactory.createKey(GalleryImage.class.getSimpleName(), title));
+        updateThumbnail();
     }
 
     // Accessors for the fields. JDO doesn't use these, but your application does.
@@ -94,5 +102,21 @@ public class GalleryImage {
 
     public void setImageType(String imageType) {
         this.imageType = imageType;
+    }
+
+    public Blob getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(Blob thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public void updateThumbnail() {
+        ImagesService imagesService = ImagesServiceFactory.getImagesService();
+        Image oldImage = ImagesServiceFactory.makeImage(getImage());
+        Transform resize = ImagesServiceFactory.makeResize(200, 300);
+        Image newImage = imagesService.applyTransform(resize, oldImage);
+        setThumbnail(new Blob(newImage.getImageData()));
     }
 }

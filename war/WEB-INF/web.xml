@@ -32,8 +32,8 @@
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>getImage</servlet-name>
-    <url-pattern>/libertycinema/getimage</url-pattern>
+    <servlet-name>uploadImage</servlet-name>
+    <url-pattern>/libertycinema/uploadimage</url-pattern>
   </servlet-mapping>
 
     <servlet>
