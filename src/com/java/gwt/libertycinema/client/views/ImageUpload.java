@@ -31,7 +31,6 @@ public class ImageUpload implements Command {
     }
 
     public void execute() {
-        baseLayout.getMainPanel().clearContent();
         form.setAction("/libertycinema/uploadimage");
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
         form.setMethod(FormPanel.METHOD_POST);
@@ -83,8 +82,7 @@ public class ImageUpload implements Command {
 
         form.setWidget(grid);
 
-        baseLayout.getMainPanel().setTitle("Image Uploads");
-        baseLayout.getMainPanel().setContent(form);
+        baseLayout.getMainPanel().setContent("Image Uploads", form);
         History.newItem("image-upload");
     }
 

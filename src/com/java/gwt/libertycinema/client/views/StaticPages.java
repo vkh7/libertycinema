@@ -50,8 +50,7 @@ public class StaticPages implements Command {
         grid.setWidget(2, 0, new Label("Menu Description:"));
         grid.setWidget(2, 1, menuDescription);
         grid.setWidget(3, 1, submitButton);
-        baseLayout.getMainPanel().setTitle("Static Pages");
-        baseLayout.getMainPanel().setContent(grid);
+        baseLayout.getMainPanel().setContent("Static Pages", grid);
         updateMenuList();
         submitButton.addClickHandler(new SaveHandler());
         dropDown.addChangeHandler(new EditHandler());
@@ -60,7 +59,6 @@ public class StaticPages implements Command {
     @Override
     public void execute() {
         History.newItem("static-pages");
-        baseLayout.getMainPanel().clearContent();
         setupEditor();
     }
 

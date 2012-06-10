@@ -41,10 +41,6 @@ div.contentMain {
   margin-right: 10%;
 }
 
-table.contentTable{
-  width: 100%;
-}
-
 div.contentTitle {
   width: 100%;
   margin-bottom: 2%;
@@ -64,4 +60,8 @@ button.gwt-Button {
   background-color: red;
   font-style: italic;
   font-size: 0.75em;
+}
+
+table.titlePanel, table.mainPanel, table.contentPanel {
+  width: 100%;
 }
