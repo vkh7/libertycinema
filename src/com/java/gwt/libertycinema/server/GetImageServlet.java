@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.api.datastore.Blob;
 import com.java.gwt.libertycinema.server.models.GalleryImage;
 import com.java.gwt.libertycinema.server.models.PMF;
 
@@ -16,12 +15,12 @@ public class GetImageServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String key = request.getParameter("id");
-        String thumbnail = request.getParameter("thumbnail");
+        Boolean thumbnail = Boolean.valueOf(request.getParameter("thumbnail"));
         if (key != null && thumbnail != null) {
             GalleryImage image = getImage(key);
             if (image != null) {
                 response.setContentType(image.getImageType());
-                if (Boolean.valueOf(thumbnail).equals(true)) {
+                if (thumbnail.equals(true)) {
                     response.getOutputStream().write(image.getThumbnail());
                 } else {
                     response.getOutputStream().write(image.getImage());
