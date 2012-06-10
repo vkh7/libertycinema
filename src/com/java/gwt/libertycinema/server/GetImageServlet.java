@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.datastore.Blob;
 import com.java.gwt.libertycinema.server.models.GalleryImage;
 import com.java.gwt.libertycinema.server.models.PMF;
 
@@ -15,17 +16,35 @@ public class GetImageServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String key = request.getParameter("id");
-        if (key != null) {
-            PersistenceManager pm = PMF.get().getPersistenceManager();
-            GalleryImage image = pm.getObjectById(GalleryImage.class, key);
+        String thumbnail = request.getParameter("thumbnail");
+        if (key != null && thumbnail != null) {
+            GalleryImage image = getImage(key);
             if (image != null) {
                 response.setContentType(image.getImageType());
-                response.getOutputStream().write(image.getImage());
+                if (Boolean.valueOf(thumbnail).equals(true)) {
+                    response.getOutputStream().write(image.getThumbnail());
+                } else {
+                    response.getOutputStream().write(image.getImage());
+                }
             } else {
-                response.sendRedirect("/static/noimage.png");
+                imageNotFound(response);
             }
         } else {
-            response.sendRedirect("/static/noimage.png");
+            imageNotFound(response);
         }
+    }
+
+    public GalleryImage getImage(String key) {
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        GalleryImage image = pm.getObjectById(GalleryImage.class, key);
+        if (image == null) {
+            return null;
+        } else {
+            return image;
+        }
+    }
+
+    public void imageNotFound(HttpServletResponse response) throws IOException {
+        response.sendRedirect("/static/noimage.png");
     }
 }
