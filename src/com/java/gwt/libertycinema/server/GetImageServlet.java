@@ -13,7 +13,8 @@ import com.java.gwt.libertycinema.server.models.PMF;
 @SuppressWarnings("serial")
 public class GetImageServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
         String key = request.getParameter("id");
         Boolean thumbnail = Boolean.valueOf(request.getParameter("thumbnail"));
         if (key != null && thumbnail != null) {
