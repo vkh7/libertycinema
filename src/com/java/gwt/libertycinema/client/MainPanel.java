@@ -21,7 +21,7 @@ public class MainPanel extends Composite {
         contentHolder.setStyleName("contentMain");
         verticalPanel.add(title);
         verticalPanel.setStyleName("contentTable");
-        contentHolder.add(verticalPanel);
+        contentHolder.setWidget(verticalPanel);
         initWidget(contentHolder);
     }
 
