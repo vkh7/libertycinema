@@ -23,7 +23,8 @@ import com.java.gwt.libertycinema.server.models.PMF;
 @SuppressWarnings("serial")
 public class UploadImageServlet extends HttpServlet {
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) {
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException{
         String title = null;
         String description = null;
         String imageType = null;
@@ -48,10 +49,8 @@ public class UploadImageServlet extends HttpServlet {
             PersistenceManager pm = PMF.get().getPersistenceManager();
             pm.makePersistent(image);
             pm.close();
-
+            response.getWriter().println(image.getKey());
         } catch (FileUploadException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
     }
