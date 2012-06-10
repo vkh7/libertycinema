@@ -8,10 +8,11 @@ import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RichTextArea;
@@ -41,7 +42,7 @@ public class StaticPages implements Command {
     }
 
     public void setupEditor() {
-        Grid grid = new Grid(4, 2);
+        FlexTable grid = new FlexTable();
         grid.setWidget(0, 0, new Label("Pick a menu item:"));
         grid.setWidget(0, 1, dropDown);
         grid.setWidget(1, 0, new Label("Menu Name:"));
@@ -49,8 +50,8 @@ public class StaticPages implements Command {
         grid.setWidget(2, 0, new Label("Menu Description:"));
         grid.setWidget(2, 1, menuDescription);
         grid.setWidget(3, 1, submitButton);
-
-        // body.add(grid);
+        baseLayout.getMainPanel().setTitle("Static Pages");
+        baseLayout.getMainPanel().setContent(grid);
         updateMenuList();
         submitButton.addClickHandler(new SaveHandler());
         dropDown.addChangeHandler(new EditHandler());
@@ -58,7 +59,8 @@ public class StaticPages implements Command {
 
     @Override
     public void execute() {
-        // body.clear();
+        History.newItem("static-pages");
+        baseLayout.getMainPanel().clearContent();
         setupEditor();
     }
 
